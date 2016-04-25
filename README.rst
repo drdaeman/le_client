@@ -5,6 +5,9 @@ le_client
 This is yet another ACME/Let's Encrypt client.
 It's inspired by acme-tiny, but does things differently.
 
+.. image:: https://travis-ci.org/drdaeman/le_client.svg?branch=master
+    :target: https://travis-ci.org/drdaeman/le_client
+
 
 Requirements
 ------------
