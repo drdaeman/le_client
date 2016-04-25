@@ -9,47 +9,47 @@ It's inspired by acme-tiny, but does things differently.
 Requirements
 ------------
 
- - The client is written in Python 3.
-   It's incompatible with Python 2.x at the moment.
+- The client is written in Python 3.
+  It's incompatible with Python 2.x at the moment.
 
- - There are no dependencies on any third-party
-   Python modules. The code should run fine on
-   a bare Python setup, without anything from PyPI.
+- There are no dependencies on any third-party
+  Python modules. The code should run fine on
+  a bare Python setup, without anything from PyPI.
 
- - You need ``openssl`` command-line executable available
-   for use in ``PATH``. It's used for keys and certificate
-   request parsing.
+- You need ``openssl`` command-line executable available
+  for use in ``PATH``. It's used for keys and certificate
+  request parsing.
 
 
 Features and limitations
 ------------------------
 
- - Does not know anything about servers or software.
-   Its only purpose is to obtain a signed certificate.
+- Does not know anything about servers or software.
+  Its only purpose is to obtain a signed certificate.
 
- - Currently, the only supported challenge type is
-   ``http-01`` (webroot).
+- Currently, the only supported challenge type is
+  ``http-01`` (webroot).
 
- - Does not require any fancy privileges.
+- Does not require any fancy privileges.
 
-   It needs to access the certificate request, have write
-   access to ``/.well-known/acme-challenge/`` and can output
-   the obtained certificate to a file or on stdout.
+  It needs to access the certificate request, have write
+  access to ``/.well-known/acme-challenge/`` and can output
+  the obtained certificate to a file or on stdout.
 
- - It works with either local account key file,
-   or can use a special remote service that can sign
-   requests.
+- It works with either local account key file,
+  or can use a special remote service that can sign
+  requests.
 
-   That was the primary reason why I wrote my own client:
-   I didn't want to keep an account's private key
-   on the untrusted machine.
+  That was the primary reason why I wrote my own client:
+  I didn't want to keep an account's private key
+  on the untrusted machine.
 
- - Currently, it only supports EC-256 account keys.
-   It's easy to add other curve sizes and RSA support,
-   but I'm lazy.
+- Currently, it only supports EC-256 account keys.
+  It's easy to add other curve sizes and RSA support,
+  but I'm lazy.
 
- - It's meant to be either usable as a standalone
-   command-line utility, or as a simple Python library.
+- It's meant to be either usable as a standalone
+  command-line utility, or as a simple Python library.
 
 
 Remote account key protocol
