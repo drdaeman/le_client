@@ -15,7 +15,7 @@ setup(
     long_description=README,
     maintainer="Aleksey Zhukov",
     maintainer_email="drdaeman@drdaeman.pp.ru",
-    url="https://github.com/drdaeman/le-client",
+    url="https://github.com/drdaeman/le_client",
     classifiers=[
         "Environment :: Web Environment",
         "Intended Audience :: Developers",
