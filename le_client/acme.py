@@ -75,7 +75,7 @@ class ACMEAuthority(object):
     PRODUCTION_BASE_URL = "https://acme-v01.api.letsencrypt.org"
     STAGING_BASE_URL = "https://acme-staging.api.letsencrypt.org"
     AGREEMENT_URL = ("https://letsencrypt.org/documents"
-                     "/LE-SA-v1.0.1-July-27-2015.pdf")
+                     "/LE-SA-v1.1.1-August-1-2016.pdf")
     DEFAULT_BASE_URL = PRODUCTION_BASE_URL
 
     def __init__(self, account_key, base_url=None):
