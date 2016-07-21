@@ -93,7 +93,7 @@ def run():
                     "-noout", "-in", args.out)
             # If the call above succeeds, this means certificate
             # is valid and not expiring yet. We shouldn't do anything.
-            return
+            return 3
         except IOError as e:
             # If the call had failed, this means the certificate
             # is invalid or going to expire soon. We'll renew it.
@@ -109,7 +109,8 @@ def run():
             f.write(cert)
     else:
         print(cert)
+    return 0
 
 
 if __name__ == "__main__":
-    run()
+    exit(run())
