@@ -18,10 +18,12 @@ import argparse
 import urllib.parse
 import re
 import os
+import os.path
 import sys
 
 from .request import CertificateRequest
 from .keys import ECKeyFile, RemoteKey
+from .utils import openssl
 from . import get_certificate
 
 
@@ -60,6 +62,12 @@ def run():
         help="Output filename. If not specified, certificate will be "
              "written to stdout.")
 
+    parser.add_argument(
+        "--only-exp", dest="only_exp", default=None, type=int, metavar="DAYS",
+        help="If output file is specified and already exist, only request "
+             "a new certificate if output is expiring in a given number "
+             "of days from now.")
+
     args = parser.parse_args()
 
     if args.key is None:
@@ -78,6 +86,18 @@ def run():
         key = RemoteKey(url, credentials=credentials)
     else:
         key = ECKeyFile(args.key)
+
+    if args.only_exp is not None and os.path.exists(args.out):
+        try:
+            openssl("x509", "-checkend", str(86400 * args.only_exp),
+                    "-noout", "-in", args.out)
+            # If the call above succeeds, this means certificate
+            # is valid and not expiring yet. We shouldn't do anything.
+            return
+        except IOError as e:
+            # If the call had failed, this means the certificate
+            # is invalid or going to expire soon. We'll renew it.
+            pass
 
     csr = CertificateRequest(args.csr)
     cert = get_certificate(
