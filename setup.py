@@ -35,5 +35,6 @@ setup(
         "console_scripts": [
             "le_client = le_client.__main__:run"
         ]
-    }
+    },
+    test_suite="le_client.tests"
 )
