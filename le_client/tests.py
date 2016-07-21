@@ -52,7 +52,7 @@ class LeClientTestCase(unittest.TestCase):
 
         key = ECKeyFile("mock.pem")
         jwk = key.as_jwk()
-        self.assertEquals(jwk, {
+        self.assertEqual(jwk, {
             "kty": "EC",
             "crv": "P-256",
             "x": "A" * 42 + "E",
@@ -91,7 +91,7 @@ class LeClientTestCase(unittest.TestCase):
 
         csr = CertificateRequest("mock.csr")
         domains = csr.get_domains()
-        self.assertEquals(domains, {"example.org", "www.example.org"})
+        self.assertEqual(domains, {"example.org", "www.example.org"})
 
     @patch("urllib.request.urlopen")
     def test_registration(self, urlopen):
@@ -118,7 +118,7 @@ class LeClientTestCase(unittest.TestCase):
             call(acme.base_url + "/acme/new-reg", b'"MockSignature"')
         ])
         self.assertTrue(is_new)
-        self.assertEquals(location, "mock://reg-location")
+        self.assertEqual(location, "mock://reg-location")
 
     @patch("builtins.open")
     @patch("urllib.request.urlopen")
